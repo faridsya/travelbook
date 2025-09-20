@@ -505,8 +505,61 @@
             color: #666;
         }
 
+        /* Mobile Menu */
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav li {
+            padding: 0.75rem 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            display: block;
+        }
+
+        .mobile-nav a:hover {
+            color: #FF6B6B;
+        }
+
+        .mobile-nav-buttons {
+            padding: 1rem 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
         /* Mobile Styles */
         @media (max-width: 768px) {
+            header {
+                position: relative;
+            }
+
+            nav {
+                justify-content: flex-start;
+                gap: 1rem;
+            }
+
             .nav-links,
             .nav-buttons {
                 display: none;
@@ -514,6 +567,11 @@
 
             .mobile-menu {
                 display: flex;
+                order: 1;
+            }
+
+            .logo {
+                order: 2;
             }
 
             .hero-container {
@@ -580,6 +638,18 @@
                 <span></span>
             </div>
         </nav>
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#hotels">Hotels</a></li>
+                <li><a href="#flights">Flights</a></li>
+                <li><a href="#bookings">Bookings</a></li>
+            </ul>
+            <div class="mobile-nav-buttons">
+                <button class="btn-login">Login</button>
+                <button class="btn-signup">Sign up</button>
+            </div>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -811,10 +881,10 @@
             }
         });
         
-        // Mobile menu toggle (basic functionality)
+        // Mobile menu toggle functionality
         document.querySelector('.mobile-menu').addEventListener('click', function() {
-            // Toggle mobile menu (you can expand this functionality)
-            console.log('Mobile menu clicked');
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
         });
         
         // Smooth scrolling for navigation links
